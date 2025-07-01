@@ -1,13 +1,40 @@
 #include <stdio.h>
 #include <conio.h>
 
-int stack[100], choice, n, top, x, i;
-void push(void);
-void pop(void);
-void display(void);
+int stack[100], choice, n, top=-1, x, i;
+
+void push(){
+    if (top>=n-1){
+        printf("\n STACK is Overflow ");
+    } else {
+        printf("Enter a value to be pushed : ");
+        scanf("%d",&x);
+        top++ ;
+        stack[top] =  x;
+    }
+}
+
+void pop() {
+    if (top<0) {
+        printf("\nUnderflow");
+    } else {
+        printf("\nThe popped elements is %d ", stack[top]);
+        top--;
+    }
+}
+
+void display() {
+    if (top >=0 ){
+        printf("\n The elements in STACK \n");
+        for (i=top; i>=0 ; i--){
+            printf("\n %d ", stack[i]);
+        } 
+    } else {
+        printf("\n The STACK is empty");
+    }
+}
 
 int main() {
-    top = -1 ;
     printf("\n Enter the size of the STACK : ");
     scanf("%d", &n);
     printf("\n STACK OPERATIONS USING ARRAY ");
@@ -40,33 +67,3 @@ int main() {
     return 0;
 }
 
-void push(){
-    if (top>=n-1){
-        printf("\n STACK is Overflow ");
-    } else {
-        printf("Enter a value to be pushed : ");
-        scanf("%d",&x);
-        top++ ;
-        stack[top] =  x;
-    }
-}
-
-void pop() {
-    if (top <= -1) {
-        printf("\n STACK is Underflow");
-    } else {
-        printf("\n The popped elements is %d ", stack[top]);
-        top--;
-    }
-}
-
-void display() {
-    if (top >=0 ){
-        printf("\n The elements in STACK \n");
-        for (i=top; i>=0 ; i--){
-            printf("\n %d ", stack[i]);
-        } 
-    } else {
-        printf("\n The STACK is empty");
-    }
-}
