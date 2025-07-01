@@ -1,19 +1,18 @@
 #include <stdio.h>
 #include <conio.h>
-#include <string.h>
 
 int main() {
 	int a[20], b[20], c[40], i, j, m, n;
 
-	printf("ENTER NU. ELEMENTS OF 1ST ARRAY : ");
+	printf("No. of Elements of first array : ");
 	scanf("%d", &m);
-	printf("ENTER THE ELEMENTS : ");
+	printf("Enter Elements : ");
 	for (i=0; i<m; i++){
 		scanf("%d", &a[i]);
 	}
-	printf("ENTER NU. ELEMENTS OF 2ND ARRAY : ");
+	printf("No. of Elements of secound array : ");
 	scanf("%d", &n);
-	printf("ENTER THE ELEMENTS : ");
+	printf("Enter Elements : ");
 	for (j=0; j<n; j++){
 		scanf("%d", &b[j]);
 	}
