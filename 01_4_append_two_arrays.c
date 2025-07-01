@@ -2,20 +2,12 @@
 #include <conio.h>
 
 int main() {
-	int a[20], b[20], c[40], i, j, m, n;
+	int c[40], i, j;
 
-	printf("No. of Elements of first array : ");
-	scanf("%d", &m);
-	printf("Enter Elements : ");
-	for (i=0; i<m; i++){
-		scanf("%d", &a[i]);
-	}
-	printf("No. of Elements of secound array : ");
-	scanf("%d", &n);
-	printf("Enter Elements : ");
-	for (j=0; j<n; j++){
-		scanf("%d", &b[j]);
-	}
+	int a[10] = {2,4,2,5};  // n = 4
+	int b[10] = {4,5,6,3,2,7};  // m = 6
+
+	int m = 4, n = 6;
 	
 	for (i=0; i<m; i++) {
 		c[i] = a[i];
