@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <malloc.h> // optional
 
 typedef struct node {
     int data;
@@ -52,15 +52,12 @@ void display() {
 
 int main() {
     push(10);
-    push(50);
     push(2);
-    push(40);
     push(50);
+    push(40);
     display();
-
     pop();
     pop();
     display();
-
     return 0;
 }
