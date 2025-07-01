@@ -17,7 +17,7 @@ node* createnode(int data) {
     return newnode;
 }
 
-node* insertnode(int n) {
+void insertnode(int n) {
     first = NULL;
     last = NULL;
 
