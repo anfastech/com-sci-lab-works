@@ -1,13 +1,10 @@
 // creating the linked list node
-
 #include <stdio.h>
 #include <malloc.h>
-
 typedef struct node {
     int data;
     struct node *next;
 } node;
-
 node *newnode, *ptr, *first = NULL, *last = NULL;
 
 node* createnode(int data) {
@@ -16,24 +13,18 @@ node* createnode(int data) {
     newnode->next = NULL;
     return newnode;
 }
-
 void insertnode(int n) {
-    first = NULL;
-    last = NULL;
-
+    first = NULL, last = NULL;
     int i, data;
     for (i=0; i<n; i++){
-        printf("\nEnter node %d : ", i+1);
+        printf("Enter node %d : ", i+1);
         scanf("%d",&data);
-        newnode = createnode(data);
-        if (first==NULL && last==NULL) {
+        createnode(data);
+        if (first==NULL) {
             first = last = newnode;
-            first->next = NULL;
-            last->next = NULL;
         } else {
             last->next = newnode;
             last = newnode;
-            last->next = NULL;
         }
     }
     printf("\nNode Created Successfully!!!..\n");
