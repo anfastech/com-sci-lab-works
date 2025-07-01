@@ -33,10 +33,10 @@ void pop() {
     } else {
         temp = first;
         first = first->next;
-        printf("\nPOPED - %d", temp->data);
-        free(temp);
+        if (first==NULL) last = NULL;
     }
-    if (first==NULL) last = NULL;
+    printf("\nPOPED - %d", temp->data);
+    free(temp);
 }
 
 void display() {

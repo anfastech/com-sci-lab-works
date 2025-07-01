@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <ctype.h>
 
 typedef struct node {
     int data;
@@ -24,43 +24,54 @@ void push(int data) {
         newnode->next=first;
         first=newnode;
     }
-    printf("\nPUSHED : %d ",data);
 } 
 
-void pop() {
+int pop() {
+    int popped;
     if (first==NULL) {
         printf("\nThe stack is Empty!! Underflow..");
     } else {
         temp = first;
         first = first->next;
-        printf("\nPOPED - %d", temp->data);
-        free(temp);
+        if (first==NULL) last = NULL;
     }
-    if (first==NULL) last = NULL;
+    popped = temp->data;
+    free(temp);
+    return popped;
 }
 
-void display() {
-    if (first==NULL) {
-        printf("\nNothing in stack");
-    } else {
-        printf("\nThe Stack : ");
-        for (ptr=first; ptr != NULL; ptr= ptr->next) {
-            printf(" %d -> ", ptr->data);
+int evaluate_postfix(char *exp){
+    for(int i=0; exp[i]; i++){
+        if (isdigit(exp[i])) {
+            push(exp[i] - '0');
+        } else if (exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/' ) {
+            int val1 = pop();
+            int val2 = pop();
+            switch (exp[i]) {
+                case '+':
+                    push(val2+val1);
+                    break;
+                case '-':
+                    push(val2-val1);
+                    break;
+                case '*':
+                    push(val2*val1);
+                    break;
+                case '/':
+                    push(val2/val1);
+                    break;
+            }
         }
     }
+    return pop();
 }
 
 int main() {
-    push(10);
-    push(50);
-    push(2);
-    push(40);
-    push(50);
-    display();
-
-    pop();
-    pop();
-    display();
+    char exp[20];
+    printf("Enter Postfix Expression : ");
+    gets(exp);
+    int result = evaluate_postfix(exp);
+    printf("\nResult: %d\n", result);
 
     return 0;
 }
