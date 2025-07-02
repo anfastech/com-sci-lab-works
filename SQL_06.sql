@@ -1,6 +1,6 @@
  1.Create a table Hospital with the fields (DoctorID, DoctorName, Department, Qualification, Experience). Write the queries to perform the following.
  
-  Table: Hospital
+  Table: hospital
 
 | Field Name    | Data Type   | Description              |
 | ------------- | ----------- | ------------------------ |
@@ -10,8 +10,8 @@
 | qualification | VARCHAR(10) | Qualification            |
 | experience    | INT         | Experience in years      |
 
--- Create Hospital table
-CREATE TABLE Hospital (
+-- Create hospital table
+CREATE TABLE hospital (
     doctorid VARCHAR(5),
     doctorname VARCHAR(25),
     department VARCHAR(20),
@@ -20,33 +20,34 @@ CREATE TABLE Hospital (
 );
 
 -- a) Insert 5 records
-INSERT INTO Hospital VALUES
+INSERT INTO hospital VALUES
 ('D001', 'Dr. Riya', 'Cardiology', 'MD', 10),
 ('D002', 'Dr. Manoj', 'Skin', 'MBBS', 3),
 ('D003', 'Dr. Neha', 'Ortho', 'MS', 4),
 ('D004', 'Dr. Arun', 'Skin', 'MD', 6),
-('D005', 'Dr. Priya', 'Neurology', 'MBBS', 2);
+('D005', 'Dr. Mitra', 'Skin', 'MBBS', 6),
+('D006', 'Dr. Priya', 'Neurology', 'MBBS', 2);
 
 -- b) Display all doctors
-SELECT * FROM Hospital;
+SELECT * FROM hospital;
 
 -- c) Display doctors with qualification 'MD'
-SELECT * FROM Hospital WHERE qualification = 'MD';
+SELECT * FROM hospital WHERE qualification = 'MD';
 
 -- d) Doctors with >5 years experience but NOT 'MD'
-SELECT * FROM Hospital
+SELECT * FROM hospital
 WHERE experience > 5 AND qualification != 'MD';
 
 -- e) Doctors in 'Skin' department
-SELECT * FROM Hospital WHERE department = 'Skin';
+SELECT * FROM hospital WHERE department = 'Skin';
 
 -- f) Update experience of doctor with ID 'D003' to 5
-UPDATE Hospital
+UPDATE hospital
 SET experience = 5
 WHERE doctorid = 'D003';
 
 -- g) Delete doctor with ID 'D005'
-DELETE FROM Hospital WHERE doctorid = 'D005';
+DELETE FROM hospital WHERE doctorid = 'D005';
 
 
 
@@ -101,6 +102,6 @@ WHERE Product_Name ILIKE 's%';
 
 -- f) Products NOT in category 'paste'
 SELECT * FROM Product
-WHERE Category <> 'paste';
+WHERE Category != 'paste';
 
 

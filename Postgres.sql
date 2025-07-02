@@ -2,16 +2,12 @@ _________________________________ (1)
 
 1. Write a program code to calculate the area of a circle for a value of radius varying from 3 to 7. Store the radius and the corresponding value of the calculated area in an empty table named Areas with fields Radius and Area.
 
-CREATE TABLE areas (
-    radius INT,
-    area DECIMAL(10, 2)
-);
-
 DO $$
 DECLARE
     r INT;
     a DECIMAL(10,2);
 BEGIN
+    CREATE TABLE areas (radius INT, area DECIMAL(10,2));
     FOR r IN 3..7 LOOP
         a := PI() * r * r;
         INSERT INTO areas (radius, area) VALUES (r, a);
@@ -22,7 +18,7 @@ _________________________________ (2) (PROCEDURE)
 
 2.  Create a procedure to print Fibonacci numbers up to a limit, where the limit is passed as an argument.
 
-CREATE OR REPLACE PROCEDURE print_fibonacci(limit INT)
+CREATE OR REPLACE PROCEDURE print_fibonacci(n INT)
 LANGUAGE plpgsql
 AS $$
 DECLARE
@@ -30,9 +26,9 @@ DECLARE
     b INT := 1;
     c INT;
 BEGIN
-    RAISE NOTICE 'Fibonacci Series up to %:', limit;
+    RAISE NOTICE 'Fibonacci Series up to %:', n;
 
-    WHILE a <= limit LOOP
+    WHILE a <=n LOOP
         RAISE NOTICE '%', a;
         c := a + b;
         a := b;
@@ -58,7 +54,7 @@ DECLARE
     j INT;
     fact BIGINT;
 BEGIN
-    RAISE NOTICE 'Factorials from 1 to 10:'
+    RAISE NOTICE 'Factorials from 1 to 10:';
 
     FOR i IN 1..10 LOOP
         fact := 1;
@@ -85,7 +81,7 @@ DECLARE
     rate INT;
     amt INT;
     u INT := 300;
-    c INT : 1234;
+    c INT := 1234;
 BEGIN
     IF u <= 100 THEN
         rate := 3;
@@ -106,7 +102,7 @@ _________________________________ (2) (FUNCTION)
 2. Create a function to check whether a given number is prime or not.
 
 CREATE OR REPLACE FUNCTION is_prime(n INT)
-RETURN BOOLEAN
+RETURNS BOOLEAN
 LANGUAGE plpgsql
 AS $$
 DECLARE
@@ -125,3 +121,7 @@ BEGIN
     RETURN TRUE;
 END;
 $$;
+
+Select the function 
+
+SELECT is_prime(7);
