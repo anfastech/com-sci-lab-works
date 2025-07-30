@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Changer</title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 50px;
+            transition: background-color 0.5s;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Click the Btn to change the background color</h2>
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+        const colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "cyan", "lime"];
+        let index = 0;
+        
+        function changeColor() {
+            document.body.style.backgroundColor = colors[index];
+            index = (index + 1) % colors.length;
+        }
+    </script>
+</body>
+</html>

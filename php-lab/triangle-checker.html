@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triangle Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            width: 100px;
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Triangle Checker</h2>
+    <div>
+        <input type="number" id="sideA" placeholder="Side a" min="0.1" step="any">
+        <input type="number" id="sideB" placeholder="Side b" min="0.1" step="any">
+        <input type="number" id="sideC" placeholder="Side c" min="0.1" step="any">
+    </div>
+    <button onclick="checkTriangle()">Check Triangle</button>
+    <div id="result">Enter side lengths and click the button</div>
+
+    <script>
+        function checkTriangle() {
+            const a = parseFloat(document.getElementById("sideA").value);
+            const b = parseFloat(document.getElementById("sideB").value);
+            const c = parseFloat(document.getElementById("sideC").value);
+            const resultDiv = document.getElementById("result");
+
+            // Validate input
+            if (isNaN(a) || isNaN(b) || isNaN(c) || a <= 0 || b <= 0 || c <= 0) {
+                resultDiv.innerHTML = "Please enter valid positive numbers for all sides.";
+                return;
+            }
+
+            // Check triangle inequality
+            if (a + b > c && a + c > b && b + c > a) {
+                let type = "";
+                if (a === b && b === c) {
+                    type = "Equilateral";
+                } else if (a === b || b === c || a === c) {
+                    type = "Isosceles";
+                } else {
+                    type = "Scalene";
+                }
+
+                // Calculate area
+                const s = (a + b + c) / 2;
+                const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+                
+                resultDiv.innerHTML = `
+                    <strong>This is a valid ${type} triangle.</strong><br>
+                    Side lengths: ${a}, ${b}, ${c}<br>
+                    Perimeter: ${(a + b + c).toFixed(2)}<br>
+                    Area: ${area.toFixed(2)}
+                `;
+            } else {
+                resultDiv.innerHTML = "These sides <strong>cannot</strong> form a triangle.";
+            }
+        }
+    </script>
+</body>
+</html>

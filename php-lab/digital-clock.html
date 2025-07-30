@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>12-Hour Clock</title>
+    <style>
+        #clock {
+            font-size: 48px;
+            font-family: monospace;
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;  
+            
+            const timeString = [
+                hours,
+                now.getMinutes(),
+                now.getSeconds()
+            ].map(n => n < 10 ? "0" + n : n).join(":") + " " + ampm;
+            
+            document.getElementById("clock").textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</head>
+<body>
+    <div id="clock">--:--:-- --</div>
+</body>
+</html>

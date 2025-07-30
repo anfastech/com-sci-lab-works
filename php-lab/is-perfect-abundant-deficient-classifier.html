@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      function num() {
+        let num = parseInt(prompt("Enter a Positive Integer:"));
+
+        if (isNaN(num) || num <= 0) {
+          alert("Please Enter a Valid Positive Integer.");
+        } else {
+          let sum = 0;
+
+          for (let i = 1; i <= num / 2; i++) {
+            if (num % i === 0) {
+              sum += i;
+            }
+          }
+
+          if (sum === num) {
+            alert(num + " is a Perfect Number.");
+          } else if (sum > num) {
+            alert(num + " is an Abundant Number.");
+          } else {
+            alert(num + " is a Deficient Number.");
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <button onclick="num()">Click Me</button>
+    </div>
+  </body>
+</html>
