@@ -1,5 +1,3 @@
-
-
 class checkZero {
     public static void main (String arg[]) {
         int n = Integer.parseInt(arg[0]);
