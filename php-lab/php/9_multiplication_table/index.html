@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multiplication Table</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+
+<h1>Multiplication Table</h1>
+
+<input type="number" id="number" placeholder="Enter a number">
+
+<button onclick="generateTable()">Generate Table</button>
+
+<div id="tableResult"></div>
+
+<script>
+
+function generateTable()
+{
+var number = document.getElementById('number').value;
+
+if(number == "")
+{
+alert("Please enter a number");
+return;
+}
+
+$.get('gen-table.php',{number:number},function(response)
+{
+document.getElementById('tableResult').innerHTML=response;
+});
+
+}
+
+</script>
+
+</body>
+</html>
